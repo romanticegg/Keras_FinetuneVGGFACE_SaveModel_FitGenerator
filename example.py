@@ -96,7 +96,7 @@ x = Dense(4096, activation='relu', name='fc6')(x)
 x = Dense(4096, activation='relu', name='fc7')(x)
 out = Dense(classes, activation='softmax', name='fc8')(x)
 keras_vggface_IJBA = Model(image_input, out)
-sgd = SGD(lr=0.001, decay=1e-4, momentum=0.9, nesterov=True)
+sgd = SGD(lr=0.001, decay=0.0, momentum=0.9, nesterov=False)
 print(keras_vggface_IJBA.summary())
 
 keras_vggface_IJBA.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
@@ -105,7 +105,7 @@ keras_vggface_IJBA_json = keras_vggface_IJBA.to_json()
 with open("/home/zhaojian/Keras/Projects/GAN/models/VGGFACE/keras_vggface_IJBA.json", "w") as json_file:
     json_file.write(keras_vggface_IJBA_json)
 # checkpoint
-filepath="/home/zhaojian/DEEP/Keras/Projects/GAN/models/VGGFACE/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+filepath="/home/zhaojian/Keras/Projects/GAN/models/VGGFACE/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
