@@ -24,7 +24,7 @@ img_h = 224
 channels = 3
 classes = 332
 batch_size = 32
-epochs = 3
+epochs = 100
 # Finetune list
 Finetune_file = open("/home/zhaojian/Keras/datasets/IJB-A/IJBA_split1/train/IJBA_split1_finetune.txt", "r")
 Finetune_lines = Finetune_file.readlines()
